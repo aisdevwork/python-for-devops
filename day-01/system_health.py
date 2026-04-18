@@ -1,6 +1,6 @@
 import psutil
 #Check-cpu,memory,disk of system using python library & take respective thresholds from USER 
-# Then compare the value with result in Terminal
+# Then compare the value with result in Terminal - SYSTEM HEALTH script
 def check_cpu():
     cpu_threshold = int(input("Enter the CPU Threshold:"))
     current_cpu = psutil.cpu_percent(interval=1) 
@@ -23,7 +23,7 @@ def check_disk():
     disk_threshold = int(input("Enter Disk Threshold :"))
     current_disk = psutil.disk_usage('/').percent # attribute - percent
     print(f"Disk Usage in ROOT is :{current_disk}")
-    if disk_threshold > current_disk:
+    if current_disk > disk_threshold:
        print("DISK ALERT Email sent...")
     else:
        print("DISK usage in SAFE STATE")
